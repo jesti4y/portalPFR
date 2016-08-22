@@ -12,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ru.portalPFR.dao.AbstractDao;
 import ru.portalPFR.model.PersistentLogin;
-//import com.websystique.springmvc.dao.AbstractDao;
-//import com.websystique.springmvc.model.PersistentLogin;
 
 /**
  * Created by 048ChubakovaEL on 15.08.2016.

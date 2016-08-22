@@ -4,6 +4,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
@@ -41,8 +42,8 @@ public class AppConfig extends WebMvcConfigurerAdapter{
     @Autowired
     RoleToUserProfileConverter roleToUserProfileConverter;
 
-    @Autowired
-    private Environment environment;
+//    @Autowired
+//    private Environment environment;
 
 
     /**
@@ -63,8 +64,20 @@ public class AppConfig extends WebMvcConfigurerAdapter{
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+//        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+        registry.addResourceHandler("/views/**").addResourceLocations("/views/");
+
     }
+
+
+    //@Override
+//public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler(Constants.Url.RESOURCES + "/**").addResourceLocations(Constants.Url.RESOURCES + "/");
+//    public static final String RESOURCES = "/resources";
+//        }
+
+
+
 
     /**
      * Configure Converter to be used.
@@ -81,8 +94,10 @@ public class AppConfig extends WebMvcConfigurerAdapter{
      */
     @Bean
     public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("/i18n/messages");
+//        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename(MESSAGE_SOURCE);
+//        messageSource.setBasename("/i18n/messages");
         messageSource.setDefaultEncoding(StandardCharsets.UTF_8.name());
         return messageSource;
     }
@@ -100,8 +115,8 @@ public class AppConfig extends WebMvcConfigurerAdapter{
     public LocaleResolver localeResolver(){
         CookieLocaleResolver resolver = new CookieLocaleResolver();
         resolver.setCookieName(LOCALE_PARAM_NAME);
-        resolver.setDefaultLocale(new Locale(environment.getProperty(Constants.Property.LANGUAGE_DEFAULT), environment.getProperty(Constants.Property.COUNTRY_DEFAULT)));
-        resolver.setCookieName("myLocaleCookie");
+//        resolver.setDefaultLocale(new Locale(environment.getProperty(Constants.Property.LANGUAGE_DEFAULT), environment.getProperty(Constants.Property.COUNTRY_DEFAULT)));
+//        resolver.setCookieName("myLocaleCookie");
         resolver.setCookieMaxAge(4800);
         return resolver;
     }
@@ -114,11 +129,16 @@ public class AppConfig extends WebMvcConfigurerAdapter{
     }
 
 
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+//        interceptor.setParamName("mylocale");
+//        registry.addInterceptor(interceptor);
+//    }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-        interceptor.setParamName("mylocale");
-        registry.addInterceptor(interceptor);
+        registry.addInterceptor(localeChangeInterceptor());
     }
 
     /*Tiles*/
@@ -136,13 +156,5 @@ public class AppConfig extends WebMvcConfigurerAdapter{
         return tilesViewResolver;
     }
 }
-
-
-
-
-//@Override
-//public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler(Constants.Url.RESOURCES + "/**").addResourceLocations(Constants.Url.RESOURCES + "/");
-//        }
 
 

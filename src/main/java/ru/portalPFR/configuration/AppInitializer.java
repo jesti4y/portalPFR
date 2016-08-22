@@ -3,6 +3,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
+import javax.servlet.ServletRegistration;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -17,7 +18,8 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return null;
+        return new Class<?>[]{AppConfig.class};
+//        return null;
     }
 
     @Override
@@ -32,5 +34,11 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
         characterEncodingFilter.setForceEncoding(true);
         return new Filter[]{characterEncodingFilter};
     }
+
+//    @Override
+//    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+//        registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
+//        super.customizeRegistration(registration);
+//    }
 
 }
