@@ -8,6 +8,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
@@ -32,6 +33,7 @@ import java.util.Locale;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "ru.portalPFR")
+//@EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true, securedEnabled = true)
 public class AppConfig extends WebMvcConfigurerAdapter{
     private static final String MESSAGE_SOURCE = "/WEB-INF/i18n/messages";
     private static final String[] TILES_DEFINITIONS = {"/WEB-INF/tiles.xml"};
@@ -64,8 +66,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
-        registry.addResourceHandler("/views/**").addResourceLocations("/views/");
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 
     }
 

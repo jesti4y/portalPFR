@@ -11,135 +11,49 @@
           xmlns:spring="http://www.springframework.org/tags"
           xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-    <html>
-
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-        <spring:url value="/resources/logo.ico" var="resourceLink"/>
-        <link rel="shortcut icon" href="${resourceLink}" type="image/x-icon"/>
-
-        <spring:url value="/resources/css/bootstrapS.css" var="resourceLink"/>
-        <link rel="stylesheet" href="${resourceLink}" type="text/css"/>
-
-        <spring:url value="/resources/js/jquery-3.1.0.min.js" var="resourceLink"/>
-        <script type="text/javascript" src="${resourceLink}"><!--empty--></script>
-
-        <spring:url value="/resources/js/bootstrap.min.js" var="resourceLink"/>
-        <script type="text/javascript" src="${resourceLink}"><!--empty--></script>
-
-        <title><spring:message code="application.title"/></title>
-    </head>
-    <head><title>Информационный портал ОПФР по Иркутской области</title></head>
-    <body>
-    <!--<nav class="navbar navbar-default navbar-fixed-top">-->
-        <!--<div class="container-fluid navbar-brand-header">-->
-
-        <!--</div>-->
-        <!--<div class="container-fluid">-->
-            <!--<div class="navbar-header">-->
-                <!--&lt;!&ndash;<a class="navbar-brand" href="${rootUrl}">&ndash;&gt;-->
-                    <!--<spring:message code="header.projectName"/>-->
-                <!--&lt;!&ndash;</a>&ndash;&gt;-->
-            <!--</div>-->
-
-            <!--<div class="collapse navbar-collapse">-->
-                <!--<h1 class="nav navbar-nav">Информационный портал ОПФР по Иркутской области</h1>-->
-                <!---->
-                <!--&lt;!&ndash;<ul class="nav navbar-nav">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<security:authorize access="hasRole('ROLE_ADMIN')">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<a href="${adminUrl}">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<spring:message code="header.adminPage"/>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</a>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<a href="${userUrl}">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<spring:message code="header.userPage"/>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</a>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</security:authorize>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<security:authorize access="hasRole('ROLE_USER')">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<a href="${userUrl}">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<spring:message code="header.userPage"/>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</a>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</security:authorize>&ndash;&gt;-->
-                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-
-                <!--&lt;!&ndash;<ul class="nav navbar-nav navbar-right">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<security:authorize access="!isAuthenticated()">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<p class="navbar-text">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<spring:message code="header.loggedInAs"/> ${user}&ndash;&gt;-->
-                        <!--&lt;!&ndash;</p>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<a href="${loginUrl}"><spring:message code="header.logIn"/></a>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</security:authorize>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<security:authorize access="isAuthenticated()">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<c:if test="${not empty user and not empty user.username}">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<p class="navbar-text">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<spring:message code="header.loggedInAs"/> ${user.username}&ndash;&gt;-->
-                            <!--&lt;!&ndash;</p>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</c:if>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<form class="navbar-form navbar-right" action="${logoutUrl}" method="POST">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<button class="btn btn-default" name="submit" type="submit">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<spring:message code="header.logout"/>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</button>&ndash;&gt;-->
-                                <!--&lt;!&ndash;&#160;&ndash;&gt;-->
-                            <!--&lt;!&ndash;</form>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</security:authorize>&ndash;&gt;-->
-                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</nav>-->
-
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Brand</a>
+                <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+                    <!--<span class="sr-only">Toggle navigation</span>-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                <!--</button>-->
+                <a class="navbar-brand" href="#"><img src="/resources/img/logoPFR.png#" width="80" height="80" alt="ПФР"></img></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <!--<input class="form-control" placeholder="Search" type="text">-->
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
-                </ul>
+                <h1 class="text-right"><spring:message code="header.projectName"/></h1>
+                <h3 class="text-right"><spring:message code="header.projectOrgName"/></h3>
+
+                <!--<ul class="nav navbar-nav">-->
+                    <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+                    <!--<li><a href="#">Link</a></li>-->
+                    <!--<li class="dropdown">-->
+                        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
+                        <!--<ul class="dropdown-menu" role="menu">-->
+                            <!--<li><a href="#">Action</a></li>-->
+                            <!--<li><a href="#">Another action</a></li>-->
+                            <!--<li><a href="#">Something else here</a></li>-->
+                            <!--<li class="divider"></li>-->
+                            <!--<li><a href="#">Separated link</a></li>-->
+                            <!--<li class="divider"></li>-->
+                            <!--<li><a href="#">One more separated link</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                <!--</ul>-->
+                <!--<form class="navbar-form navbar-left" role="search">-->
+                    <!--<div class="form-group">-->
+                        <!--&lt;!&ndash;<input class="form-control" placeholder="Search" type="text">&ndash;&gt;-->
+                    <!--</div>-->
+                    <!--<button type="submit" class="btn btn-default">Submit</button>-->
+                <!--</form>-->
+                <!--<ul class="nav navbar-nav navbar-right">-->
+                    <!--<li><a href="#">Link</a></li>-->
+                <!--</ul>-->
             </div>
         </div>
     </nav>
-</body>
-    </html>
 
 </jsp:root>
