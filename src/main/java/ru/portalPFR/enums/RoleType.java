@@ -1,4 +1,4 @@
-package org.template.enums;
+package ru.portalPFR.enums;
 
 public enum RoleType {
     ADMIN("ROLE_ADMIN"),

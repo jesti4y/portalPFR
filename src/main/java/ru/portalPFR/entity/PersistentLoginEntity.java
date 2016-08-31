@@ -1,4 +1,4 @@
-package org.template.entity;
+package ru.portalPFR.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

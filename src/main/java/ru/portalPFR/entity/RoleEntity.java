@@ -1,4 +1,4 @@
-package org.template.entity;
+package ru.portalPFR.entity;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

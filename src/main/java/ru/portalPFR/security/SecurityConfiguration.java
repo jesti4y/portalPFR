@@ -17,9 +17,13 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import ru.portalPFR.enums.RoleType;
+//import ru.portalPFR.service.CustomPersistentTokenBasedRememberMeServices;
+//import ru.portalPFR.service.PersistentLoginService;
 import ru.portalPFR.util.Constants;
 
 import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 
 /**
  * Created by 048ChubakovaEL on 15.08.2016.
@@ -28,11 +32,16 @@ import java.nio.charset.StandardCharsets;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+    public static final int TOKEN_VALIDITY_SECONDS = 86400;
 
     @Autowired
     @Qualifier("customUserDetailsService")
     UserDetailsService userDetailsService;
 
+
+//    @Autowired
+//    private PersistentLoginService persistentLoginService;
+//
     @Autowired
     PersistentTokenRepository tokenRepository;
 
@@ -53,6 +62,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .access("hasRole('USER') or hasRole('ADMIN') or hasRole('DBA')")
                 .antMatchers(Constants.Url.RESOURCES + "/**").permitAll()
                 .antMatchers(Constants.Url.ROOT).permitAll()
+//                .antMatchers(Constants.Url.LOGIN + "/**").permitAll()
+//                .antMatchers(Constants.Url.ADMIN + "/**").hasAnyAuthority(RoleType.ADMIN.getName())
+//                .antMatchers(Constants.Url.USER + "/**").hasAnyAuthority(RoleType.ADMIN.getName(), RoleType.USER.getName())
+//                .and().formLogin().defaultSuccessUrl(Constants.Url.ROOT).loginPage(Constants.Url.LOGIN).failureUrl(Constants.Url.LOGIN + "?error=true")
+//                .and().rememberMe().rememberMeServices(rememberMeServices()).key(rememberMeServices().getKey()).tokenValiditySeconds(TOKEN_VALIDITY_SECONDS)
+//                .and().logout().permitAll().logoutSuccessUrl(Constants.Url.LOGIN + "?logout=true")
+//                .and().exceptionHandling().accessDeniedPage(Constants.Url.ERROR_403)
+//                .and().csrf()
+//                .and()
+//                .userDetailsService(userDetailsService());
+
+
+
 //                .antMatchers("/newuser/**", "/delete-user-*").access("hasRole('ADMIN')").antMatchers("/edit-user-*")
 //                .access("hasRole('ADMIN') or hasRole('DBA')").and().formLogin().loginPage("/login")
 //                .loginProcessingUrl("/login").usernameParameter("ssoId").passwordParameter("password")
@@ -62,6 +84,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .tokenValiditySeconds(86400).and().csrf().and().exceptionHandling().accessDeniedPage("/Access_Denied")
                 .and().userDetailsService(userDetailsService);
     }
+
+
 
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
@@ -104,6 +128,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 "remember-me", userDetailsService, tokenRepository);
         return tokenBasedservice;
     }
+//
+//    @Bean
+//    public CustomPersistentTokenBasedRememberMeServices rememberMeServices() {
+//        String key = UUID.randomUUID().toString();
+//        return new CustomPersistentTokenBasedRememberMeServices(key, userDetailsService(), persistentLoginService);
+//    }
 
     @Bean
     public AuthenticationTrustResolver getAuthenticationTrustResolver() {

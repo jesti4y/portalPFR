@@ -7,6 +7,13 @@
     <definition name="index" template="/WEB-INF/views/index.jspx">
         <put-attribute name="header" value="/WEB-INF/views/header.jspx" cascade="true"/>
         <put-attribute name="content" value="" cascade="true"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jspx" cascade="true"/>
+    </definition>
+
+    <definition name="mainView" extends="index">
+        <!--<put-attribute name="header" value="/WEB-INF/views/header.jspx" cascade="true"/>-->
+        <!--<put-attribute name="menu" value="/WEB-INF/views/menu.jspx" cascade="true"/>-->
+        <put-attribute name="content" value="/WEB-INF/views/main.jspx" cascade="true"/>
         <!--<put-attribute name="footer" value="/WEB-INF/views/footer.jspx" cascade="true"/>-->
     </definition>
 

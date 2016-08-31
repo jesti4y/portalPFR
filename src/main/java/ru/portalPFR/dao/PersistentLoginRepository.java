@@ -1,9 +1,9 @@
-package org.template.dao;
+package ru.portalPFR.dao;
 
-import org.template.entity.PersistentLoginEntity;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
+import ru.portalPFR.entity.PersistentLoginEntity;
 
 public interface PersistentLoginRepository extends PagingAndSortingRepository<PersistentLoginEntity, String> {
     @Modifying
