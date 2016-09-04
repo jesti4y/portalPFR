@@ -1,8 +1,9 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="portalPFR:war">
+  <artifact type="war" name="portalPFR.war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="portalPFR.war">
+    <root id="archive" name="portalPFR.war.war">
       <element id="artifact" artifact-name="portalPFR:war exploded" />
+      <element id="javaee-facet-resources" facet="portalPFR/web/Web2" />
     </root>
   </artifact>
 </component>
